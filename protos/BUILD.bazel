@@ -1,0 +1,19 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@rules_proto_grpc//rust:defs.bzl", "rust_proto_library")
+
+proto_library(
+    name = "messages_proto",
+    srcs = [
+        "messages.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_google_protobuf//:any_proto",
+    ],
+)
+
+rust_proto_library(
+    name = "messages_rust_proto",
+    protos = [":messages_proto"],
+    visibility = ["//visibility:public"],
+)

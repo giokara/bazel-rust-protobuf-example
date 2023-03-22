@@ -1,0 +1,29 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_test_suite")
+
+rust_library(
+    name = "rust_example",
+    srcs = [
+        "lib.rs",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//protos:messages_rust_proto",
+        "@crate_index//:clap",
+        "@rules_proto_grpc//rust/raze:protobuf",
+    ],
+)
+
+rust_test_suite(
+    name = "rust_tests",
+    size = "small",
+    srcs = [
+        "test1.rs",
+        "test2.rs",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":rust_oqton_tool",
+        "//protos:messages_rust_proto",
+        "@rules_proto_grpc//rust/raze:protobuf",
+    ],
+)

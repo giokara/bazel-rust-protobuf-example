@@ -9,7 +9,7 @@ rust_library(
     deps = [
         "//protos:messages_rust_proto",
         "@crate_index//:clap",
-        "@rules_proto_grpc//rust/raze:protobuf",
+        "@rules_rust//proto/3rdparty/crates:protobuf",
     ],
 )
 
@@ -22,8 +22,7 @@ rust_test_suite(
     ],
     visibility = ["//visibility:public"],
     deps = [
-        ":rust_oqton_tool",
+        ":rust_example",
         "//protos:messages_rust_proto",
-        "@rules_proto_grpc//rust/raze:protobuf",
     ],
 )
